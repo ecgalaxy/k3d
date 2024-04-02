@@ -1,0 +1,5 @@
+---
+k3d_version: "5.6.0"
+k3d_checksum: "sha256:c2ca4b90c0c064cd56ae674d586e2003712fe5841748223552e2f8536f741366"
+k3d_download_url: "https://github.com/k3d-io/k3d/releases/download/v{{ k3d_version }}/k3d-linux-amd64"
+k3d_installation_dir: "/opt/k3d/{{ k3d_version }}"

@@ -1,0 +1,31 @@
+---
+
+- name: "Ensure existence of the directory '{{ k3d_installation_dir }}'"
+  become: true
+  ansible.builtin.file:
+    path: "{{ k3d_installation_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 'u=rwx,go=rx'
+
+- name: Download k3d
+  become: true
+  ansible.builtin.get_url:
+    url: "{{ k3d_download_url }}"
+    dest: "{{ k3d_installation_dir }}/k3d"
+    checksum: "{{ k3d_checksum }}"
+    force: false
+    timeout: 600
+    mode: 'u=rwx,go=rx'
+  register: downloaded_file
+
+- name: "Create symlink"
+  become: true
+  ansible.builtin.file:
+    src: "{{ k3d_installation_dir }}/k3d"
+    dest: "/usr/local/bin/k3d"
+    state: link
+    owner: root
+    group: root
+    mode: 'u=rwx,go=rx'
