@@ -1,0 +1,26 @@
+---
+galaxy_info:
+  author: ecgalaxy
+  description: Ansible role that installs k3d and addons.
+  company: European Commission
+  license: EUPL-1.2
+  min_ansible_version: "2.5"
+  platforms:
+    - name: Amazon Linux
+      versions:
+        - "2"
+        - "2023"
+    - name: EL
+      versions:
+        - "8"
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+        - jammy
+  galaxy_tags:
+    - k3d
+    - kubernetes
+    - k8s
+    - containers
+dependencies: []

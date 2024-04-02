@@ -1,0 +1,15 @@
+- name: Verify
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Include role defaults vars
+      with_first_found:
+        - "../../defaults/main.yml"
+      ansible.builtin.include_vars: "{{ item }}"
+    - name: "Execute k3d --version"
+      ansible.builtin.command: k3d --version
+      register: output
+    - name: Assert k3d version
+      ansible.builtin.assert:
+        that:
+        - "'v{{ k3d_version.split('.')[0] }}' in output.stdout"
